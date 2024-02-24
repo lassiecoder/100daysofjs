@@ -111,3 +111,4 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
 
 Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+
