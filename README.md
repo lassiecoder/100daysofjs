@@ -101,7 +101,7 @@ In the above example:
 3. An if statement checks if the user's age is 18 or older.
 4. Depending on the age, different messages are logged to the console.
 
-
+***
 
 ### Modern mode – "use strict"
 
