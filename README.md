@@ -8,8 +8,8 @@ I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more
 Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
 
 **Exploring JavaScript Fundamentals:**
-- Code structure
-- Modern mode: "use strict"
+- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
+- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
 - Variables & Data types
 - Interaction methods: alert, prompt, confirm
 - Type Conversions
