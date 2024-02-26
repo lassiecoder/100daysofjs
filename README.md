@@ -27,7 +27,7 @@
 
 🥑 [The “undefined” value](#the-undefined-value) 
 
-🥑 [Objects and Symbols](#objectsandsymbols) 
+🥑 [Objects and Symbols](#objects-and-symbols) 
 
 
 *****
