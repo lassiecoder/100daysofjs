@@ -10,7 +10,7 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 **Exploring JavaScript Fundamentals:**
 - [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
 - [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- Variables & Data types
+- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
 - Interaction methods: alert, prompt, confirm
 - Type Conversions
 - Basic operators & Math
