@@ -11,8 +11,8 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
 - [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
 - [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- Interaction methods: alert, prompt, confirm
-- Type Conversions
+- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
+- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
 - Basic operators & Math
 - Comparisons & Conditional branching: if, '?'
 - Logical operators & Nullish coalescing '??'
