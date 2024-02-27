@@ -1,117 +1,122 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
+
+**Interaction methods: alert, prompt, confirm & Type Conversions**
 
 
-Hey everyone! 👋
+## Interaction methods
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+🥑 [alert](#alert) 
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+🥑 [prompt](#prompt) 
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- Interaction methods: alert, prompt, confirm
-- Type Conversions
-- Basic operators & Math
-- Comparisons & Conditional branching: if, '?'
-- Logical operators & Nullish coalescing '??'
-- Loops: while, for
-- "switch" statement
-- Functions & Expressions
-- Arrow functions basics
-- Special features of JavaScript
+🥑 [confirm](#confirm) 
+ 
 
-**Improving Code Quality:**
-- Debugging in the browser
-- Coding Style & Comments
-- Writing efficient "Ninja" code
-- Automated testing using Mocha
-- Polyfills & Transpilers for cross-browser compatibility
+## Type conversions
 
-**Mastering Objects in JavaScript:**
-- Basics of Objects
-- Object references and copying
-- Garbage collection
-- Object methods and "this" keyword
-- Constructors and the "new" operator
-- Optional chaining with '?.'
-- Symbol type
-- Object to primitive conversion
+🥑 [String Conversion](#string-conversion) 
 
-**JavaScript Data Types & Operations:**
-- Understanding Data types
-- Methods of primitives
-- Working with Numbers
-- Manipulating Strings
-- Handling Arrays & Array methods
-- Exploring Iterables
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+🥑 [Numeric Conversion](#numeric-conversion) 
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+🥑 [Boolean Conversion](#boolean-conversion) 
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+*****
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+### _alert_
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+The `alert()` method displays a message in a dialog box with an OK button, prompting the user to acknowledge the message.
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+**For example:**
+```javascript                                               
+alert("Welcome to my 100 days of JS challenge!");
+```
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+### _prompt_
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+The `prompt()` method displays a dialog box with a message and an input field, allowing the user to enter data. It returns the text entered by the user, or null if the user clicks Cancel.
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+**For example:**
+```javascript 
+let name = prompt("Hello! I'm lassie. What's your name?");
+console.log("Hello, " + name + "!");
+```
 
+### _confirm_
+
+The `confirm()` method displays a dialog box with a message and OK and Cancel buttons, allowing the user to confirm or cancel an action. It returns true if the user clicks OK and false if the user clicks Cancel.
+
+**For example:**
+```javascript 
+let result = confirm("Are you sure you want to delete this item?");
+if (result) {
+  console.log("Item deleted successfully.");
+} else {
+  console.log("Deletion canceled.");
+}
+```
+
+We use these interaction methods in JavaScript to provide feedback to users and prompt them for input or confirmation.
+
+*****
+
+## Type conversions
+
+The process of converting values from one data type to another is Type conversion.
+
+### _String Conversion_
+
+String conversion occurs when a value is converted to a string data type. 
+
+**For example:**
+```javascript 
+let num = 42;
+let str = String(num); // Explicit string conversion using String() function
+console.log(typeof str); // Output: string
+```
+
+### _Numeric Conversion_
+
+Numeric conversion occurs when a value is converted to a numeric data type. This can happen using - `Number()` or `parseInt()`
+
+The `Number()` function converts a value to a numeric data type (integer or floating-point number).
+
+**For example:**
+```javascript 
+let num1 = Number("42"); // Convert string to number
+let num2 = Number("3.14"); // Convert string to number
+let num3 = Number(true); // Convert boolean to number (true -> 1, false -> 0)
+console.log(num1); // Output: 42
+console.log(num2); // Output: 3.14
+console.log(num3); // Output: 1
+```
+
+ The `parseInt()` function parses a string and returns an integer. It stops parsing when it encounters a non-digit character.
+
+ **For example:**
+```javascript 
+let num1 = parseInt("42"); // Parse string to integer
+let num2 = parseInt("3.14"); // Parse string to integer (decimal part is ignored)
+let num3 = parseInt("42px"); // Parse string to integer (non-digit character stops parsing)
+console.log(num1); // Output: 42
+console.log(num2); // Output: 3
+console.log(num3); // Output: 42
+```
+
+The `parseFloat()` function in JavaScript is used to parse a string and convert it to a floating-point number (a number with decimal points).
+
+ **For example:**
+```javascript 
+let priceString = "Price: $24.99"; // String containing a price
+let price = parseFloat(priceString); // Extract the floating-point number from the string
+console.log(price); // Output: 24.99
+```
+
+### _Boolean Conversion_
+
+Boolean conversion occurs when a value is converted to a boolean data type (`true` or `false`). This can happen implicitly in certain contexts, such as in conditional statements (`if`, `while`, etc.), or explicitly using the `Boolean()` function.
+
+ **For example:**
+```javascript 
+let str = "hello";
+let bool = Boolean(str); // Explicit boolean conversion using Boolean() function
+console.log(bool); // Output: true (non-empty string is converted to true)
+```
