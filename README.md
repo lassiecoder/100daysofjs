@@ -302,3 +302,5 @@ console.log(a >> 1); // Output: 2 (00000101 >> 1 = 00000010)
 // Zero-fill Right Shift (>>>)
 console.log(a >>> 1); // Output: 2 (00000101 >>> 1 = 00000010)
 ``` 
+
+
