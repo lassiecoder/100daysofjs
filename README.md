@@ -13,7 +13,7 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
 - [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
 - [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- Basic operators & Math
+- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
 - Comparisons & Conditional branching: if, '?'
 - Logical operators & Nullish coalescing '??'
 - Loops: while, for
