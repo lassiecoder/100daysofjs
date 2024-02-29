@@ -14,7 +14,7 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
 - [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
 - [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- Comparisons & Conditional branching: if, '?'
+- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
 - Logical operators & Nullish coalescing '??'
 - Loops: while, for
 - "switch" statement
