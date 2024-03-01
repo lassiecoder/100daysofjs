@@ -22,13 +22,6 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - Arrow functions basics
 - Special features of JavaScript
 
-**Improving Code Quality:**
-- Debugging in the browser
-- Coding Style & Comments
-- Writing efficient "Ninja" code
-- Automated testing using Mocha
-- Polyfills & Transpilers for cross-browser compatibility
-
 **Mastering Objects in JavaScript:**
 - Basics of Objects
 - Object references and copying
