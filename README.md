@@ -20,13 +20,13 @@ It's used to evaluate whether one value is greater than, less than, equal to, or
 
 🥑 [The `else` Clause](#the-else-clause)
 
-🥑 [Several Conditions – `else if`](#several-conditions-–-else-if)
+🥑 [Several Conditions `else if`](#several-conditions-else-if)
 
-🥑 [Conditional Operator `?`](#conditional-operator)
+🥑 [Conditional Operator `"?"`](#conditional-operator)
 
-🥑 [Multiple `?`](#multiple)
+🥑 [Multiple `"?"`](#multiple)
 
-🥑 [Non-traditional Use of `?`](#non-traditional-use-of)
+🥑 [Non-traditional Use of `"?"`](#non-traditional-use-of)
 
 
 *****
@@ -153,7 +153,7 @@ if (x > 5) {
 }
 ```
 
-### _Several Conditions – `else if`_
+### _Several Conditions `else if`_
 
  The `else if` statement is used to specify a new condition if the previous condition in the `if` statement is false.
 
@@ -169,7 +169,7 @@ if (x > 10) {
 }
 ```
 
-### _Conditional Operator `?`_
+### _Conditional Operator `"?"`_
 
 The conditional operator `(? :)` is a shorthand version of the `if...else` statement. It evaluates a condition and returns one of two values based on whether the condition is true or false.
 
@@ -180,7 +180,7 @@ let result = (x > 5) ? "x is greater than 5" : "x is not greater than 5";
 console.log(result); // Output: "x is greater than 5"
 ```
 
-### _Multiple `?`_
+### _Multiple `"?"`_
 
 You can use multiple conditional operators `(? :)` consecutively to evaluate multiple conditions.
 
@@ -191,7 +191,7 @@ let result = (x > 5) ? "x is greater than 5" : (x === 5) ? "x is equal to 5" : "
 console.log(result); // Output: "x is greater than 5"
 ```
 
-### _Non-traditional Use of `?`_
+### _Non-traditional Use of `"?"`_
 
 The conditional operator `(? :)` can be used in non-traditional ways, such as returning a boolean value directly.
 
