@@ -14,7 +14,24 @@ It's used to evaluate whether one value is greater than, less than, equal to, or
 
 ## 🍄 Conditional branching: if, '?'
 
+🥑 [`if` statement](#if-statement)
+
+🥑 [Boolean Conversion](#boolean-conversion)
+
+🥑 [The `else` Clause](#the-else-clause)
+
+🥑 [Several Conditions – `else if`](#several-conditions-–-else-if)
+
+🥑 [Conditional Operator `?`](#conditional-operator)
+
+🥑 [Multiple `?`](#multiple)
+
+🥑 [Non-traditional Use of `?`](#non-traditional-use-of)
+
+
 *****
+
+## 🍄 Comparisons 
 
 ### _Boolean comparison_
 
@@ -92,3 +109,96 @@ alert(a == b); // true!
 ```
 
 This behavior might seem peculiar, but from JavaScript's perspective, it's a normal outcome. During an equality check, values undergo numeric conversion, while explicit Boolean conversion follows a different set of rules.
+
+
+*****
+
+## 🍄 Conditional branching: if, '?'
+
+### _`if` statement_
+
+`if` statement is used to execute a block of code if a specified condition is true.
+
+**For example:**
+```javascript
+let x = 10;
+if (x > 5) {
+    console.log("x is greater than 5");
+}
+```
+
+### _Boolean Conversion_
+
+JavaScript automatically converts values to boolean in contexts that require it, such as `if` conditions. Falsy values like `0`, `false`, `null`, `undefined`, `NaN`, and empty strings `('')` are converted to `false`, while truthy values are converted to `true`.
+
+**For example:**
+```javascript
+let num = 0;
+if (num) {
+    console.log("num is truthy"); // This block won't be executed
+}
+```
+
+### _The `else` Clause_
+
+The `else` clause is used in conjunction with the `if` statement to execute a block of code if the condition specified in the `if` statement is false.
+
+**For example:**
+```javascript
+let x = 3;
+if (x > 5) {
+    console.log("x is greater than 5");
+} else {
+    console.log("x is not greater than 5"); // This block will be executed
+}
+```
+
+### _Several Conditions – `else if`_
+
+ The `else if` statement is used to specify a new condition if the previous condition in the `if` statement is false.
+
+**For example:**
+```javascript
+let x = 10;
+if (x > 10) {
+    console.log("x is greater than 10");
+} else if (x === 10) {
+    console.log("x is equal to 10"); // This block will be executed
+} else {
+    console.log("x is less than 10");
+}
+```
+
+### _Conditional Operator `?`_
+
+The conditional operator `(? :)` is a shorthand version of the `if...else` statement. It evaluates a condition and returns one of two values based on whether the condition is true or false.
+
+**For example:**
+```javascript
+let x = 10;
+let result = (x > 5) ? "x is greater than 5" : "x is not greater than 5";
+console.log(result); // Output: "x is greater than 5"
+```
+
+### _Multiple `?`_
+
+You can use multiple conditional operators `(? :)` consecutively to evaluate multiple conditions.
+
+**For example:**
+```javascript
+let x = 10;
+let result = (x > 5) ? "x is greater than 5" : (x === 5) ? "x is equal to 5" : "x is less than 5";
+console.log(result); // Output: "x is greater than 5"
+```
+
+### _Non-traditional Use of `?`_
+
+The conditional operator `(? :)` can be used in non-traditional ways, such as returning a boolean value directly.
+
+**For example:**
+```javascript
+let x = 10;
+let isGreaterThan5 = (x > 5) ? true : false;
+console.log(isGreaterThan5); // Output: true
+```
+
