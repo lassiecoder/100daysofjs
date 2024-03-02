@@ -1,110 +1,172 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
+
+**Logical operators & Nullish coalescing '??'**
 
 
-Hey everyone! 👋
+## 🍄 Logical operators
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+Logical operators in JavaScript are used to perform logical operations on boolean values. 
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+🥑 [`||` (OR)](#or) 
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- Logical operators & Nullish coalescing '??'
-- Loops: while, for
-- "switch" statement
-- Functions & Expressions
-- Arrow functions basics
-- Special features of JavaScript
+🥑 [OR `"||"` finds the first truthy value](#finds-the-first-truthy-value) 
 
-**Mastering Objects in JavaScript:**
-- Basics of Objects
-- Object references and copying
-- Garbage collection
-- Object methods and "this" keyword
-- Constructors and the "new" operator
-- Optional chaining with '?.'
-- Symbol type
-- Object to primitive conversion
+🥑 [`&&` (AND)](#&&-and) 
 
-**JavaScript Data Types & Operations:**
-- Understanding Data types
-- Methods of primitives
-- Working with Numbers
-- Manipulating Strings
-- Handling Arrays & Array methods
-- Exploring Iterables
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+🥑 [AND `“&&”` finds the first falsy value](#and-“&&”-finds-the-first-falsy-value) 
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+🥑 [`!` (NOT)](#not) 
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+## 🍄 Nullish coalescing '??'
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+The nullish coalescing operator `??` is a recent addition to JavaScript. It returns the first defined value of two expressions.
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+🥑 [Comparison with `"||"`](#comparison-with) 
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+🥑 [Precedence](#precedence) 
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+*****
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+### _|| (OR)_
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+The logical OR operator `||` returns true if at least one of the operands is truthy.
 
+**For example:**
+```javascript
+let result = true || false; // true
+```
+
+### _OR `||` finds the first truthy value_
+
+The `||` operator returns the first truthy operand it encounters, or the last operand if all are falsy.
+
+**For example:**
+```javascript
+let result = null || undefined || 0 || 'hello'; // 'hello'
+```
+
+### _&& (AND)_
+
+The logical AND operator `&&` returns true only if both operands are truthy.
+
+**For example:**
+```javascript
+let result = true && false; // false
+```
+
+### _AND “&&” finds the first falsy value_
+
+The `&&` operator returns the first falsy operand it encounters, or the last operand if all are truthy.
+
+**For example:**
+```javascript
+let result = 'hello' && 0 && false; // 0
+```
+
+### _! (NOT)_
+
+The logical NOT operator `!` returns the opposite boolean value of its operand.
+
+**For example:**
+```javascript
+let result = !true; // false
+```
+
+## 🍄 Nullish coalescing '??'
+
+It's used to provide a default value when the first value is null or undefined.
+
+**For example:**
+```javascript
+let user;
+
+alert(user ?? "Anonymous"); // "Anonymous" (user is undefined)
+
+let user = "John";
+
+alert(user ?? "Anonymous"); // "John" (user is defined)
+```
+
+It can also be used with a sequence of expressions to select the first defined value from a list.
+
+**For example:**
+```javascript
+let firstName = null;
+let lastName = null;
+let nickName = "Supercoder";
+
+alert(firstName ?? lastName ?? nickName ?? "Anonymous"); // "Supercoder"
+```
+
+The nullish coalescing operator is a concise way to handle default values in JavaScript, especially when dealing with potentially null or undefined variables.
+
+### _Comparison with ||_
+
+In JavaScript, the OR operator `(||)` can be used similarly to the nullish coalescing operator `(??)`. 
+
+**For example:**
+
+```javascript
+let firstName = null;
+let lastName = null;
+let nickName = "Supercoder";
+
+// Using OR operator to show the first truthy value
+alert(firstName || lastName || nickName || "Anonymous"); // Output: Supercoder
+```
+
+The key difference between them is that:
+
+- || returns the first truthy value.
+- ?? returns the first defined value.
+
+In practice, `||` treats `false`, `0`, an empty string `""` and `null/undefined` as falsy values, returning the second argument if any of these is encountered. However, `??` only returns the second argument if the first one is null or undefined.
+
+**For example:**
+
+```javascript
+let height = 0;
+
+alert(height || 100); // Output: 100
+alert(height ?? 100); // Output: 0
+```
+
+### _Precedence_
+
+The `??` operator in JavaScript has the same precedence as the `||` operator, both equal to 3. This means they are evaluated before `=` and `?`, but after most other operations like `+` and `*`.
+
+**For example:**
+
+```javascript
+let height = 0;
+
+alert(height || 100); // Output: 100
+alert(height ?? 100); // Output: 0
+```
+
+If parentheses are omitted, the higher precedence of `*` could lead to incorrect results:
+
+**For example:**
+
+```javascript
+// Without parentheses (not recommended)
+let area = height ?? 100 * width ?? 50;
+
+// Works this way (not what we want)
+let area = height ?? (100 * width) ?? 50;
+```
+
+When using `??` with && or `||`, explicit parentheses are required to avoid syntax errors:
+
+**For example:**
+
+```javascript
+// Syntax error without explicit parentheses
+let x = 1 && 2 ?? 3;
+
+// Use explicit parentheses to work around it
+let x = (1 && 2) ?? 3;
+
+alert(x); // Output: 2
+```
+
+This limitation was introduced to prevent programming mistakes when transitioning from `||` to `??`.
