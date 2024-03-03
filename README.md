@@ -1,5 +1,5 @@
 
-**Loops: while, for**
+**Loops in JS**
 
 Loops in JavaScript are used to execute a block of code repeatedly until a specified condition is met. 
 
