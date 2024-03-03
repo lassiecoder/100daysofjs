@@ -1,110 +1,113 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
 
+**Loops: while, for**
 
-Hey everyone! 👋
+Loops in JavaScript are used to execute a block of code repeatedly until a specified condition is met. 
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+🥑 [`for` Loop](#for-loop) 
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+🥑 [`while` Loop](#while-loop) 
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- Loops: while, for
-- "switch" statement
-- Functions & Expressions
-- Arrow functions basics
-- Special features of JavaScript
+🥑 [`do...while` Loop](#do-while-loop) 
 
-**Mastering Objects in JavaScript:**
-- Basics of Objects
-- Object references and copying
-- Garbage collection
-- Object methods and "this" keyword
-- Constructors and the "new" operator
-- Optional chaining with '?.'
-- Symbol type
-- Object to primitive conversion
+🥑 [`for...in` Loop](#for-in-loop) 
 
-**JavaScript Data Types & Operations:**
-- Understanding Data types
-- Methods of primitives
-- Working with Numbers
-- Manipulating Strings
-- Handling Arrays & Array methods
-- Exploring Iterables
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+🥑 [`for...of` Loop](#for-of-loop) 
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+🥑 [Nested Loop](#nested-loop) 
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+🥑 [`break` and `continue` Statements](#break-and-continue-statements)
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+*****
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+### _`for` loop_
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+Executes a block of code a specified number of times.
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+**For example:**
+```javascript
+for (let i = 0; i < 5; i++) {
+    console.log(i); // Output: 0, 1, 2, 3, 4
+}
+```
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+### _`while` Loop_
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+Repeatedly executes a block of code while a specified condition is true.
+
+**For example:**
+```javascript
+let i = 0;
+while (i < 5) {
+    console.log(i); // Output: 0, 1, 2, 3, 4
+    i++;
+}
+```
+
+### _`do...while` Loop_
+
+Similar to while loop, but the block of code is executed at least once, even if the condition is false.
+
+**For example:**
+```javascript
+let i = 0;
+do {
+    console.log(i); // Output: 0
+    i++;
+} while (i < 0);
+```
+
+### _`for...in` Loop_
+
+Iterates over the properties of an object.
+
+**For example:**
+```javascript
+const person = { name: 'John', age: 30, job: 'Developer' };
+for (let key in person) {
+    console.log(key, person[key]); // Output: name John, age 30, job Developer
+}
+```
+
+### _`for...of` Loop_
+
+Iterates over the values of an iterable object (arrays, strings, etc.).
+
+**For example:**
+```javascript
+const colors = ['red', 'green', 'blue'];
+for (let color of colors) {
+    console.log(color); // Output: red, green, blue
+}
+```
+
+### _Nested Loop_
+
+Using loops within loops.
+
+**For example:**
+```javascript
+for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+        console.log(i, j); // Output: 0 0, 0 1, 0 2, 1 0, 1 1, 1 2, 2 0, 2 1, 2 2
+    }
+}
+```
+
+### _`break` and `continue` Statements_
+
+`break`: Terminates the loop.
+`continue`: Skips the current iteration and moves to the next one.
+
+**For example:**
+```javascript
+for (let i = 0; i < 5; i++) {
+    if (i === 3) break;
+    console.log(i); // Output: 0, 1, 2
+}
+
+for (let i = 0; i < 5; i++) {
+    if (i === 2) continue;
+    console.log(i); // Output: 0, 1, 3, 4
+}
+```
 
