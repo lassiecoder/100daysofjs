@@ -17,7 +17,7 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
 - [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
 - [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
-- "switch" statement
+- ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
 - Functions & Expressions
 - Arrow functions basics
 - Special features of JavaScript
