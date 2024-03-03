@@ -16,7 +16,7 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
 - [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
 - [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- Loops: while, for
+- [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
 - "switch" statement
 - Functions & Expressions
 - Arrow functions basics
