@@ -1,5 +1,5 @@
 
-**Functions & Expressions**
+**Functions & Function Expressions**
 
 
 ## 🍄 Functions 
@@ -22,8 +22,19 @@ Functions in JavaScript are reusable blocks of code that perform a specific task
 
 🥑 [Functions == Comments](#functions-comments)
 
+## 🍄 Function Expresions
+
+Functions expressions allow you to define a function as part of an expression, rather than as a standalone statement.
+
+🥑 [Function is a value](#function-is-a-value)
+
+🥑 [Callback functions](#callback-functions)
+
+🥑 [Function Declaration and Function Expression](#function-declaration-and-function-expression)
 
 *****
+
+## 🍄 Functions 
 
 ### _Function Declaration_
 
@@ -143,6 +154,128 @@ function calculateArea(radius) {
 
 In the above example, the function name `calculateArea` conveys the purpose of the code better than the comment. Functions with descriptive names make the code more readable and maintainable.
 
+## 🍄 Function Expressions
 
+### _Function is a value_
 
+In JavaScript, functions are treated as values. This means they can be assigned to variables, passed as arguments, and returned from other functions just like any other data type.
 
+**For example:**
+```javascript
+function sayHi() {
+  alert("Hello");
+}
+
+let func = sayHi; // Assigning the function to a variable
+
+func(); // Outputs: Hello
+sayHi(); // Outputs: Hello
+```
+
+In the above example;
+
+1. The function `sayHi` is declared and defined.
+2. The function is assigned to the variable `func`.
+3. Both `func` and `sayHi` can be called to execute the function and output "Hello".
+
+This behavior illustrates that functions are indeed values in JavaScript. They can be stored in variables, passed around, and called just like any other value. 
+
+### _Callback functions_
+
+Callback functions are functions that are passed as arguments to other functions and are expected to be called back later if necessary. 
+
+**For example:**
+```javascript
+function ask(question, yes, no) {
+  if (confirm(question)) {
+    yes();
+  } else {
+    no();
+  }
+}
+
+function showOk() {
+  alert("You agreed.");
+}
+
+function showCancel() {
+  alert("You canceled the execution.");
+}
+
+ask("Do you agree?", showOk, showCancel);
+```
+
+In the above example, The function `ask` asks the question and depending on the user's response, `yes()` or `no()`.
+
+ `showOk` and `showCancel` are callback functions. They are passed as arguments to the `ask` function and will be called back depending on the user's response.
+
+We can also use function expressions to define callback functions inline:
+
+**For example:**
+```javascript
+ask(
+  "Do you agree?",
+  function() { alert("You agreed."); },
+  function() { alert("You canceled the execution."); }
+);
+```
+
+Anonymous function expressions are used directly inside the `ask` function call. They serve the same purpose as named functions but are declared inline and are not accessible outside of the `ask` function.
+
+### _Function Declaration and Function Expression_
+
+***Function Declaration*** and ***Function Expression*** are two ways to define functions in JavaScript, each with its own syntax and behavior.
+
+***<ins>Function Declaration</ins>:***
+
+***Syntax:*** Declared as a separate statement in the main code flow using the function keyword.
+
+***Hoisted:*** Function declarations are hoisted, meaning they are moved to the top of their scope during compilation and can be called before they are defined.
+
+**For example:**
+```javascript
+function greet() {
+  console.log('Hello!');
+}
+greet(); // Output: Hello!
+```
+
+***<ins>Function Expression</ins>:***
+
+***Syntax:*** Created inside an expression or another syntax construct by assigning it to a variable.
+
+***Not Hoisted:*** Function expressions are not hoisted, meaning they cannot be called before they are defined in the code.
+
+**For example:**
+```javascript
+let greet = function() {
+  console.log('Hello!');
+};
+greet(); // Output: Hello!
+```
+
+Let's talk about differences!
+
+***Hoisting:*** Function declarations are hoisted, function expressions are not.
+
+***Accessibility:*** Function declarations are accessible throughout their scope, while function expressions are only accessible through the variable they are assigned to.
+
+**For example:**
+```javascript
+greet(); // Works fine with function declaration
+function greet() {
+  console.log('Hello!');
+}
+
+greet(); // Throws an error with function expression
+let greet = function() {
+  console.log('Hello!');
+};
+```
+
+***Use Cases:***
+
+Function declarations are useful for creating named functions that are accessible throughout the scope.
+Function expressions are useful for creating functions dynamically or passing them as arguments to other functions.
+
+Keep coding and stay curious! 🌸 🎯 💁🏻‍♀️
