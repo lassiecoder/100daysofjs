@@ -20,10 +20,9 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
 - [Functions & Expressions](https://github.com/lassiecoder/100daysofjs/tree/functions-and-expressions)
 - [Arrow functions basics](https://github.com/lassiecoder/100daysofjs/tree/arrow-functions)
-- Special features of JavaScript
 
 **Mastering Objects in JavaScript:**
-- Basics of Objects
+- [Basics of Objects](https://github.com/lassiecoder/100daysofjs/tree/basics-of-objects)
 - Object references and copying
 - Garbage collection
 - Object methods and "this" keyword
