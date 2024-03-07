@@ -1,110 +1,253 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
 
+**Basics of Objects**
 
-Hey everyone! 👋
+🥑 [Literals and properties](#literals-and-properties) 
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+🥑 [Square brackets](#square-brackets) 
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+🥑 [Property value shorthand](#property-value-shorthand) 
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
-- ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
-- [Functions & Expressions](https://github.com/lassiecoder/100daysofjs/tree/functions-and-expressions)
-- [Arrow functions basics](https://github.com/lassiecoder/100daysofjs/tree/arrow-functions)
-- Special features of JavaScript
+🥑 [Property names limitations](#property-names-limitations) 
 
-**Mastering Objects in JavaScript:**
-- Basics of Objects
-- Object references and copying
-- Garbage collection
-- Object methods and "this" keyword
-- Constructors and the "new" operator
-- Optional chaining with '?.'
-- Symbol type
-- Object to primitive conversion
+🥑 [Property existence test, `in` operator](#property-existence-test-in-operator)
 
-**JavaScript Data Types & Operations:**
-- Understanding Data types
-- Methods of primitives
-- Working with Numbers
-- Manipulating Strings
-- Handling Arrays & Array methods
-- Exploring Iterables
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+🥑 [The `for..in` loop](#the-forin-loop) 
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+*****
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+## 🍄 Objects
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+A JavaScript object is a data structure with key-value pairs, representing entities and holding properties to describe characteristics or behavior.
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+**For example:**
+```javascript
+let person = {
+  name: "John",
+  age: 30,
+  gender: "male",
+  isMarried: false,
+  greet: function() {
+    console.log("Hello, my name is " + this.name + "!");
+  }
+};
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+// Accessing object properties
+console.log(person.name); // John
+console.log(person.age); // 30
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+// Modifying object properties
+person.age = 35;
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+// Adding a new property
+person.city = "New York";
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+// Calling a method
+person.greet(); // Hello, my name is John!
+```
 
+In the above example, the `person` object has properties like `name`, `age`, `gender`, and `isMarried`, as well as a method `greet()` that prints a greeting message using the `name` property. These properties can hold various types of data, including strings, numbers, booleans, and even functions.
+
+### _Literals and properties_
+
+Literals are a notation for representing values directly in the code. Object literals are a specific type of literal used to define objects with properties.
+
+Properties are the key-value pairs that describe the characteristics or attributes of an object.
+
+**For example:**
+```javascript
+// Object literal with properties
+let person = {
+  name: "John",    // Property: name with value "John"
+  age: 30,         // Property: age with value 30
+  isStudent: true  // Property: isStudent with value true
+};
+
+// Accessing object properties
+console.log(person.name);      // Output: John
+console.log(person.age);       // Output: 30
+console.log(person.isStudent); // Output: true
+
+// Modifying object properties
+person.age = 35;               // Update the value of the age property
+person.isStudent = false;      // Update the value of the isStudent property
+
+// Adding a new property
+person.city = "New York";      // Add a new property city with value "New York"
+
+// Deleting a property
+delete person.isStudent;        // Remove the isStudent property
+
+// Using multiword property names (property name must be quoted)
+let car = {
+  "model name": "Toyota",       // Multiword property name
+  year: 2022
+};
+
+// Trailing comma in object literal (optional but helpful for easier modifications)
+let book = {
+  title: "JavaScript Basics",
+  author: "Jane Doe",            // Trailing comma makes it easier to add/remove properties
+};
+```
+
+In the above example, `person` is an object literal with properties like `name`, `age`, and `isStudent`. We access, modify, add, and delete properties as needed. The use of a trailing comma in the object literal (`book`) makes it convenient to add or remove properties without worrying about syntax errors.
+
+### _Square brackets_
+
+Square brackets ([]) are used for various purposes, including creating arrays, accessing array elements, and defining computed property names in objects.
+
+1. **Creating Arrays:** Square brackets are used to create arrays, which are ordered lists of values.
+
+2. **Accessing Array Elements:** Square brackets are used to access elements within an array by their index. The index starts at 0 for the first element.
+
+3. **Defining Computed Property Names in Objects:** Square brackets can be used to define object properties with dynamic or computed names.
+
+4. **Accessing Object Properties:** Square brackets are also used to access object properties when the property name is stored in a variable.
+
+**For example:**
+```javascript
+// Creating Arrays
+let numbers = [1, 2, 3, 4, 5];
+let fruits = ["apple", "orange", "banana"];
+
+// Accessing Array Elements
+console.log(numbers[0]); // Output: 1
+console.log(fruits[2]);  // Output: banana
+
+// Defining Computed Property Names in Objects
+let propertyName = "color";
+let car = {
+  make: "Toyota",
+  [propertyName]: "blue" // Computed property name
+};
+
+console.log(car.color); // Output: blue
+
+// Accessing Object Properties
+let propertyToAccess = "make";
+console.log(car[propertyToAccess]); // Output: Toyota
+```
+
+### _Property value shorthand_
+
+Property value shorthand enables concise creation of object literals by automatically assigning variable names as property keys.
+
+**For example:**
+```javascript
+// Variables representing object properties
+let name = "John";
+let age = 30;
+let gender = "male";
+
+// Object creation using property value shorthand
+let person = {
+  name,   // Equivalent to name: name
+  age,    // Equivalent to age: age
+  gender  // Equivalent to gender: gender
+};
+
+console.log(person); // Output: { name: 'John', age: 30, gender: 'male' }
+```
+
+In the above example, the properties of the person object are set using property value shorthand, where variable names serve as both keys and values. JavaScript assigns the values of the variables directly to the properties with matching names.
+
+### _Property names limitations_
+
+Property names in objects have certain limitations and conventions to follow:
+
+1. **Property names must be strings or symbols:**
+   - **String:** Property names are usually strings. They can be any valid string, including empty strings, but they cannot be numbers.
+   - **Symbol:** ES6 introduced symbols, which are unique and immutable identifiers often used as property keys in objects.
+
+2. **Reserved words:** You cannot use reserved words (keywords) as property names.
+
+3. **Special characters:** Property names can include special characters like spaces, dashes, and Unicode characters, but they must be enclosed in quotes.
+
+**For example:**
+```javascript
+// Using reserved words as property names
+let person = {
+  // Syntax error: cannot use "delete" as a property name
+  delete: "John",
+  // Valid property name
+  age: 30
+};
+
+// Using special characters in property names
+let car = {
+  "model-name": "Toyota",
+  "year-of-manufacture": 2020
+};
+
+// Accessing properties with special characters
+console.log(car["model-name"]); // Toyota
+console.log(car["year-of-manufacture"]); // 2020
+
+// Using symbols as property names
+const key1 = Symbol("key1");
+const key2 = Symbol("key2");
+
+let obj = {
+  [key1]: "value1",
+  [key2]: "value2"
+};
+
+console.log(obj[key1]); // value1
+console.log(obj[key2]); // value2
+```
+
+In the above example, The first object, `person`, tries to use the reserved word `delete` as a property name, resulting in a syntax error. The second object, `car`, showcases the use of special characters like hyphens in property names. The third object, `obj`, utilizes symbols as property names for unique and private keys.
+
+### _Property existence test, `in` operator_
+
+The `in` operator is used to check if a property exists in an object. It returns `true` if the specified property is found in the object, otherwise it returns `false`.
+
+**For example:**
+```javascript
+let person = {
+  name: "John",
+  age: 30,
+  gender: "male"
+};
+
+// Checking if a property exists
+console.log("name" in person); // true
+console.log("city" in person); // false
+```
+
+In the above example, we have an object `person` with properties like `name`, `age`, and `gender`. We use the `in` operator to check if the properties `"name"` and `"city"` exist in the person object. As a result, `"name" in person` returns `true` because the name property exists, while `"city" in person` returns `false` because the `city` property does not exist.
+
+We can also check if a property exists in an object's prototype chain, by writing;
+
+**For example:**
+```javascript
+console.log("toString" in person); // true
+```
+
+### _The `for..in` loop_
+
+`for...in` loop in JavaScript is used to iterate over the enumerable properties of an object. It allows you to loop through all the properties of an object and perform some action for each property.
+
+**For example:**
+```javascript
+let person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+
+for (let key in person) {
+  console.log(key + ": " + person[key]);
+}
+```
+
+In the above example, the `for...in` loop iterates over each property of the `person` object. For each property, it assigns the property name to the `key` variable, and then it accesses the property value using `person[key]`. The loop prints out each property name along with its corresponding value.
+
+**Output:**
+```javascript
+name: John
+age: 30
+city: New York
+```
+
+The `for...in` loop iterates over all enumerable properties, including inherited ones. To iterate only over an object's own properties (excluding inherited ones), you can use the `hasOwnProperty()` method within the loop.
