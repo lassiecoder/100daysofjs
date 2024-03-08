@@ -1,109 +1,168 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
 
+**Object references and copying**
 
-Hey everyone! 👋
+🥑 [Comparison by reference](#comparison-by-reference) 
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+🥑 [Cloning and merging, `Object.assign`](#cloning-and-merging-objectassign) 
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+🥑 [Nested cloning](#nested-cloning) 
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
-- ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
-- [Functions & Expressions](https://github.com/lassiecoder/100daysofjs/tree/functions-and-expressions)
-- [Arrow functions basics](https://github.com/lassiecoder/100daysofjs/tree/arrow-functions)
+*****
 
-**Mastering Objects in JavaScript:**
-- [Basics of Objects](https://github.com/lassiecoder/100daysofjs/tree/basics-of-objects)
-- Object references and copying
-- Garbage collection
-- Object methods and "this" keyword
-- Constructors and the "new" operator
-- Optional chaining with '?.'
-- Symbol type
-- Object to primitive conversion
+## 🍄 Object references and copying
 
-**JavaScript Data Types & Operations:**
-- Understanding Data types
-- Methods of primitives
-- Working with Numbers
-- Manipulating Strings
-- Handling Arrays & Array methods
-- Exploring Iterables
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+Objects are passed and assigned by reference, not by value. This means that when you work with objects, you're dealing with references to the original object, not copies.
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+**For example:**
+```javascript
+// Object reference
+let originalObject = { key: 'value' };
+let referenceToObject = originalObject;
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+// Modifying the referenced object
+referenceToObject.key = 'new value';
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+console.log(originalObject.key); // Outputs: 'new value'
+```
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+In the above example, modifying the `referenceToObject` also affects the `originalObject` because they reference the same underlying object.
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+To create an exact copy of an object, including nested objects, you need to perform a deep copy. Refer to the below example of creating a shallow copy using the spread syntax `(...)`.
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+**For example:**
+```javascript
+// Object reference
+// Shallow copy using spread syntax
+let originalObject = { key: 'value', nested: { innerKey: 'innerValue' } };
+let copiedObject = { ...originalObject };
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+// Modifying the copied object
+copiedObject.key = 'new value';
+copiedObject.nested.innerKey = 'new inner value';
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+console.log(originalObject.key); // Outputs: 'value'
+console.log(originalObject.nested.innerKey); // Outputs: 'new inner value'
+```
 
+In the above example, modifying the `copiedObject` does not affect the `originalObject`. However, note that this is a shallow copy, and if the object contains nested objects, they will still be shared references.
+
+For a deep copy, you may need to use libraries like **Lodash** or implement a custom recursive function to ensure a complete copy of nested structures.
+
+### _Comparison by reference_
+
+It involves checking whether two variables refer to the same object in memory. When comparing objects using equality operators like `==` or `===`, JavaScript checks if the references to the objects are the same, not their contents.
+
+**For example:**
+```javascript
+// Define an object
+let obj1 = {
+  name: "John",
+  age: 30,
+  address: {
+    city: "New York",
+    country: "USA"
+  }
+};
+
+// Create a shallow copy of obj1
+let obj2 = obj1;
+
+// Create a deep copy of obj1 using the spread syntax
+let obj3 = { ...obj1 };
+
+// Modify obj1 and obj2
+obj1.name = "Jane";
+obj1.address.city = "Los Angeles";
+
+// Output the original and copied objects
+console.log("Original Object (obj1):", obj1);
+console.log("Shallow Copy (obj2):", obj2);
+console.log("Deep Copy (obj3):", obj3);
+
+// Compare object references
+console.log("obj1 === obj2:", obj1 === obj2); // true
+console.log("obj1 === obj3:", obj1 === obj3); // false
+
+// Compare object contents
+console.log("obj1.address === obj2.address:", obj1.address === obj2.address); // true
+console.log("obj1.address === obj3.address:", obj1.address === obj3.address); // true
+```
+
+In the above example, we have an object `obj1` with nested properties. We create a shallow copy `obj2` and a deep copy `obj3` of `obj1`. After modifying `obj1`, we observe how these changes affect `obj2` and `obj3` then compare the references of the objects as well as the references of their nested properties.
+
+### _Cloning and merging, `Object.assign`_
+
+`Object.assign()` method copies the values of all enumerable properties from one or more source objects to a target object, modifying the target object.
+
+**For example:**
+```javascript
+// Creating a target object
+let target = {};
+
+// Creating source objects
+let source1 = { name: 'John' };
+let source2 = { age: 30 };
+
+// Merging source objects into the target using Object.assign()
+Object.assign(target, source1, source2);
+
+// Output the target object
+console.log(target); // { name: 'John', age: 30 }
+```
+
+In the above example, `Object.assign()` copies the properties from `source1` and `source2` into the `target` object.
+
+If there are properties with the same name, the value from the later source object overwrites the earlier one.
+
+**NOTE:** `Object.assign()` performs a shallow copy, meaning that nested objects are copied by reference, not cloned. If you need to perform a deep copy, you'll need to implement **custom logic** or use **third-party libraries**.
+
+### _Nested cloning_
+
+**Nested cloning** means making a complete copy of an object along with its nested objects. This is important when you want to change the copied object without altering the original.
+
+**For example:**
+```javascript
+function deepClone(obj) {
+  // Check if obj is an object
+  if (typeof obj !== 'object' || obj === null) {
+    return obj; // Return the primitive value
+  }
+
+  // Create an empty object/array to store the cloned properties
+  const clone = Array.isArray(obj) ? [] : {};
+
+  // Iterate over each property of the object
+  for (let key in obj) {
+    // Check if the property is not inherited
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      // Recursively clone nested objects
+      clone[key] = deepClone(obj[key]);
+    }
+  }
+
+  return clone; // Return the cloned object
+}
+
+// Example object with nested properties
+const originalObj = {
+  a: 1,
+  b: {
+    c: 2,
+    d: {
+      e: 3
+    }
+  }
+};
+
+// Deep clone the object
+const clonedObj = deepClone(originalObj);
+
+// Modify the cloned object
+clonedObj.b.c = 5;
+
+// Original object remains unchanged
+console.log(originalObj); // { a: 1, b: { c: 2, d: { e: 3 } } }
+console.log(clonedObj);   // { a: 1, b: { c: 5, d: { e: 3 } } }
+```
+
+In the above example, the `deepClone` function recursively iterates over each property of the object and clones nested objects as well. This ensures that the cloned object is completely independent of the original one.
