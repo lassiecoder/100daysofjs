@@ -24,7 +24,7 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 **Mastering Objects in JavaScript:**
 - [Basics of Objects](https://github.com/lassiecoder/100daysofjs/tree/basics-of-objects)
 - [Object references and copying](https://github.com/lassiecoder/100daysofjs/tree/object-references-and-copying)
-- Garbage collection
+- [Garbage collection](https://github.com/lassiecoder/100daysofjs/tree/garbage-collection)
 - Object methods and "this" keyword
 - Constructors and the "new" operator
 - Optional chaining with '?.'
