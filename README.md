@@ -1,109 +1,117 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
 
+**Garbage collection**
 
-Hey everyone! 👋
+🥑 [Reachability](#reachability) 
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+🥑 [Two references](#two-references) 
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+🥑 [Interlinked objects](#interlinked-objects) 
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
-- ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
-- [Functions & Expressions](https://github.com/lassiecoder/100daysofjs/tree/functions-and-expressions)
-- [Arrow functions basics](https://github.com/lassiecoder/100daysofjs/tree/arrow-functions)
+🥑 [Unreachable island](#unreachable-island)
 
-**Mastering Objects in JavaScript:**
-- [Basics of Objects](https://github.com/lassiecoder/100daysofjs/tree/basics-of-objects)
-- [Object references and copying](https://github.com/lassiecoder/100daysofjs/tree/object-references-and-copying)
-- Garbage collection
-- Object methods and "this" keyword
-- Constructors and the "new" operator
-- Optional chaining with '?.'
-- Symbol type
-- Object to primitive conversion
+🥑 [Internal algorithms](#internal-algorithms) 
 
-**JavaScript Data Types & Operations:**
-- Understanding Data types
-- Methods of primitives
-- Working with Numbers
-- Manipulating Strings
-- Handling Arrays & Array methods
-- Exploring Iterables
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+*****
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+## 🍄 Garbage collection
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+It's the automatic process of reclaiming memory occupied by objects that are no longer needed or reachable by the program.
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+### _Reachability_
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+Objects are considered reachable if they are directly or indirectly accessible from the global scope or through other reachable objects. If an object has no references pointing to it, it becomes unreachable and eligible for garbage collection.
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+**For example:**
+```javascript
+let obj = { value: 42 };
+```
+As long as `obj` is reachable, it won't be garbage collected. If we reassign `obj`, making it unreachable, it becomes eligible for garbage collection.
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+```javascript
+obj = null; // Now the object { value: 42 } is unreachable
+```
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+### _Two references_
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+ Two variables can reference the same object, preventing it from being garbage collected as long as at least one of the variables remains reachable.
 
+ **For example:**
+```javascript
+let obj1 = { value: 42 };
+let obj2 = obj1; // obj2 now references the same object as obj1
+
+obj1 = null; // The object is still reachable through obj2
+```
+
+### _Interlinked objects_
+
+Objects can reference each other, creating a cycle of references. Even if these objects are no longer reachable from the global scope, they won't be garbage collected because they are still reachable from each other.
+
+**For example:**
+```javascript
+let objA = {};
+let objB = {};
+
+objA.ref = objB;
+objB.ref = objA;
+
+objA = null;
+objB = null;
+
+// Both objA and objB are unreachable from the global scope,
+// but they reference each other, preventing garbage collection
+```
+
+### _Unreachable island_
+
+If a group of objects is only reachable from within the group itself, but none of them are reachable from the global scope, they form an unreachable island and are eligible for garbage collection.
+
+**For example:**
+```javascript
+function createUnreachableIsland() {
+  let obj1 = {};
+  let obj2 = {};
+  obj1.ref = obj2;
+  obj2.ref = obj1;
+  return [obj1, obj2];
+}
+
+// The returned objects are unreachable after the function call
+createUnreachableIsland();
+```
+
+### _Internal algorithms_
+
+JavaScript engines use complex algorithms like **mark-and-sweep**, **reference counting**, and **generational garbage collection** to decide which objects are still in use and which ones can be cleared from memory. Knowing these inner workings can assist developers in writing code that uses memory more efficiently.
+
+**For example:**
+```javascript
+// Create a function to generate objects
+function generateObjects() {
+  let objects = [];
+  
+  // Generate a large number of objects
+  for (let i = 0; i < 10000; i++) {
+    objects.push({ id: i });
+  }
+  
+  return objects;
+}
+
+// Create some objects
+let objects = generateObjects();
+
+// Remove the reference to the objects
+objects = null;
+
+// Force garbage collection
+if (window.gc) {
+  window.gc();
+}
+```
+
+In the above example;
+- First, we made a function called `generateObjects()`. It made lots of objects and put them in a list.
+- Then, we ran that function to make a bunch of objects, saving them in a variable called `objects`.
+- After that, we got rid of the objects by setting the `objects` variable to `null`, showing we didn't need them anymore.
+- Lastly, we tried to clean up by asking the computer to throw away unnecessary stuff using `window.gc()`. This might have made the computer use its built-in system to clean up unused things.
