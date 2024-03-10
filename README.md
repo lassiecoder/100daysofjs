@@ -1,109 +1,133 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
+
+**Object methods and "this" keyword**
+
+🥑 [Method examples](#method-examples) 
+
+🥑 [`“this”` in methods](#this-in-methods) 
+
+🥑 [`“this”` is not bound](#this-is-not-bound) 
+
+🥑 [Arrow functions have no `“this”`](#arrow-functions-have-no-this)
 
 
-Hey everyone! 👋
+*****
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+## 🍄 Object methods
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+Objects often represent real-world entities like users or orders. These objects can have methods, which are functions stored as properties. Methods allow objects to perform actions or operations related to their properties.
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
-- ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
-- [Functions & Expressions](https://github.com/lassiecoder/100daysofjs/tree/functions-and-expressions)
-- [Arrow functions basics](https://github.com/lassiecoder/100daysofjs/tree/arrow-functions)
+```javascript
+let user = {
+  name: "John",
+  age: 30,
+  greet: function() {
+    console.log("Hello, " + this.name + "!");
+  }
+};
 
-**Mastering Objects in JavaScript:**
-- [Basics of Objects](https://github.com/lassiecoder/100daysofjs/tree/basics-of-objects)
-- [Object references and copying](https://github.com/lassiecoder/100daysofjs/tree/object-references-and-copying)
-- [Garbage collection](https://github.com/lassiecoder/100daysofjs/tree/garbage-collection)
-- Object methods and "this" keyword
-- Constructors and the "new" operator
-- Optional chaining with '?.'
-- Symbol type
-- Object to primitive conversion
+user.greet(); // Output: Hello, John!
+```
 
-**JavaScript Data Types & Operations:**
-- Understanding Data types
-- Methods of primitives
-- Working with Numbers
-- Manipulating Strings
-- Handling Arrays & Array methods
-- Exploring Iterables
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+### _Method examples_
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+To create a method in JavaScript, you can directly assign a function to an object property.
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+**For example:**
+```javascript
+let user = {
+  name: "John",
+  age: 30,
+  sayHi() {
+    alert("Hello!");
+  }
+};
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+user.sayHi(); // Output: Hello!
+```
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+Alternatively, you can first declare a function and then assign it to the object property
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+**For example:**
+```javascript
+let user = {
+  // ...
+};
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+function sayHi() {
+  alert("Hello!");
+}
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+user.sayHi = sayHi;
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+user.sayHi(); // Output: Hello!
+```
 
+Both approaches achieve the same result: defining a method named `sayHi` for the `user` object.
+
+### _`“this”` in methods_
+
+`"this"` keyword inside an object method refers to the object itself. It allows the method to access the object's properties and methods. 
+
+**For example:**
+```javascript
+let user = {
+  name: "John",
+  age: 30,
+
+  sayHi() {
+    alert(this.name);
+  }
+};
+
+user.sayHi(); // Output: John
+```
+
+Using `"this"` ensures that the method works with the current object, even if the object is referenced by a different variable. T
+
+### _`“this”` is not bound_
+
+The value of the keyword `this` is determined dynamically at runtime based on how a function is called, rather than being bound to a specific object at the time of definition.
+
+**For example:**
+```javascript
+function sayHi() {
+  console.log(this.message);
+}
+
+let user = { message: "Hello, I'm a user" };
+let admin = { message: "Greetings, I'm an admin" };
+
+user.sayHi = sayHi;
+admin.sayHi = sayHi;
+
+// Calling the function with different contexts
+user.sayHi(); // Output: Hello, I'm a user
+admin.sayHi(); // Output: Greetings, I'm an admin
+```
+
+In the above example;
+1. The `sayHi` function is declared without being part of any object.
+2. It utilizes `this` to access properties.
+3. When invoked as a method of `user` and `admin`, `this` refers to the respective objects.
+4. This dynamic behavior of `this` showcases that it's not statically bound.
+
+The above function's behavior varies based on the context in which it is called, demonstrating that `"this"` is not statically bound.
+
+### _Arrow functions have no `“this”`_
+
+Arrow functions do not have their own `"this"` context. Instead, they inherit the `"this"` value from the outer function.
+
+This behavior can be useful when we want to maintain the same `"this"` context as the surrounding code.
+
+**For example:**
+```javascript
+let user = {
+  firstName: "Ilya",
+  sayHi() {
+    let arrow = () => alert(this.firstName);
+    arrow();
+  }
+};
+
+user.sayHi(); // Output: Ilya
+```
