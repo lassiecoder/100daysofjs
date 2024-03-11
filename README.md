@@ -26,7 +26,7 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - [Object references and copying](https://github.com/lassiecoder/100daysofjs/tree/object-references-and-copying)
 - [Garbage collection](https://github.com/lassiecoder/100daysofjs/tree/garbage-collection)
 - [Object methods and "this" keyword](https://github.com/lassiecoder/100daysofjs/tree/object-methods-and-this-keyword)
-- Constructors and the "new" operator
+- [Constructors and the "new" operator](https://github.com/lassiecoder/100daysofjs/tree/constructors-and-the-new-operator)
 - Optional chaining with '?.'
 - Symbol type
 - Object to primitive conversion
