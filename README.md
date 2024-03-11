@@ -1,109 +1,104 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
 
+**Constructors and the "new" operator**
 
-Hey everyone! 👋
+🥑 [Constructor function](#constructor-function) 
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+🥑 [Constructor mode test: `new.target`](#constructor-mode-test-newtarget)
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+🥑 [Return from constructors](#return-from-constructors) 
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
-- ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
-- [Functions & Expressions](https://github.com/lassiecoder/100daysofjs/tree/functions-and-expressions)
-- [Arrow functions basics](https://github.com/lassiecoder/100daysofjs/tree/arrow-functions)
+🥑 [Methods in constructor](#methods-in-constructor)
 
-**Mastering Objects in JavaScript:**
-- [Basics of Objects](https://github.com/lassiecoder/100daysofjs/tree/basics-of-objects)
-- [Object references and copying](https://github.com/lassiecoder/100daysofjs/tree/object-references-and-copying)
-- [Garbage collection](https://github.com/lassiecoder/100daysofjs/tree/garbage-collection)
-- [Object methods and "this" keyword](https://github.com/lassiecoder/100daysofjs/tree/object-methods-and-this-keyword)
-- Constructors and the "new" operator
-- Optional chaining with '?.'
-- Symbol type
-- Object to primitive conversion
+*****
 
-**JavaScript Data Types & Operations:**
-- Understanding Data types
-- Methods of primitives
-- Working with Numbers
-- Manipulating Strings
-- Handling Arrays & Array methods
-- Exploring Iterables
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+## 🍄 Constructors and the "new" operator
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+Constructor functions and the `"new"` operator are commonly used to create multiple similar objects, such as users or menu items.
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+### _Constructor function_
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+1. Constructor functions start with a capital letter and are intended to be used with the "new" operator.
+2. When invoked with "new", a constructor function creates a new empty object and assigns it to "this".
+3. The function body then executes to modify "this" by adding properties to it.
+4. Finally, the constructed object is returned.
+5. This pattern enables the creation of objects with predefined properties and behaviors.
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+**For example:**
+```javascript
+function User(name) {
+  this.name = name;
+  this.isAdmin = false;
+}
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+let user = new User("Jack");
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+console.log(user.name); // Jack
+console.log(user.isAdmin); // false
+```
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+In the above example, behind the scenes, `"new User(...)"` creates an object with properties defined in the constructor function. This allows for easy creation of new objects with similar properties and behaviors.
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+### _Constructor mode test: `new.target`_
 
+`new.target` indicates if a function was called with the new keyword. If new is used, `new.target` is the function itself.
+
+Otherwise, it's `undefined`. This property helps adjust function behavior based on how it's called.
+
+**For example:**
+```javascript
+function User(name) {
+  if (!new.target) {
+    return new User(name);
+  }
+  this.name = name;
+}
+
+let john = User("John");
+alert(john.name); // John
+```
+
+### _Return from constructors_
+
+Constructors typically don't include a `return` statement.
+
+When a `return` statement is present:
+1. If it returns an object, that object is returned instead of the instance created by the constructor.
+2. If it returns a primitive value, the return is ignored, and the instance created by the constructor is returned.
+
+**For example:**
+```javascript
+function BigUser() {
+  this.name = "John";
+  return { name: "Godzilla" }; // Returns this object
+}
+
+console.log(new BigUser().name); // Output: Godzilla
+
+function SmallUser() {
+  this.name = "John";
+  return; // Returns this
+}
+
+console.log(new SmallUser().name); // Output: John
+```
+
+### _Methods in constructor_
+
+In constructor functions, we can define methods along with properties to create objects with specific behaviors.
+
+**For example:**
+```javascript
+function User(name) {
+  this.name = name;
+
+  this.sayHi = function() {
+    console.log("My name is: " + this.name);
+  };
+}
+
+let john = new User("John");
+
+john.sayHi(); // Output: My name is: John
+```
+
+This method enables encapsulating behavior within objects created using the constructor function.
