@@ -1,109 +1,128 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
+
+**Optional chaining '?.'**
+
+🥑 [The “non-existing property” problem](#the-non-existing-property-problem) 
+
+🥑 [Optional chaining](#optional-chaining)
+
+🥑 [Short-circuiting](#short-circuiting) 
+
+🥑 [Other variants: ?.(), ?.[]](#other-variants)
+
+*****
+
+## 🍄 Optional chaining '?.'
+
+The optional chaining `?.` provides a safe method for accessing nested object properties, even when intermediate properties may be missing.
+
+### _The “non-existing property” problem_
+
+When accessing nested object properties, errors can occur if intermediate properties are missing.
+
+**For example:**
+```javascript
+let user = {}; // a user without "address" property
+alert(user.address.street); // Error!
+```
+
+Referring to the above example, While trying to access properties like `'street'` when `'address'` doesn't exist in an object can cause errors. 
+
+To handle such scenarios gracefully, we often resort to checking for the existence of intermediate properties before accessing nested properties;
+
+**For example:**
+```javascript
+let user = {}; // user has no address
+alert(user.address ? user.address.street ? user.address.street.name : null : null);
+```
+
+Now, the repeated use of the conditional operator `(?)` or `&&` operator to check for property existence results in code duplication and decreased readability.
+
+Chaining operator introduced to address this issue.
+
+Optional chaining, we can safely access nested properties without worrying about missing intermediate properties:
+
+**For example:**
+```javascript
+let user = {}; // user has no address
+alert(user.address?.street?.name); // undefined (no error)
+```
+
+### _Optional chaining_
+
+The optional chaining operator `?.` stops property evaluation if the value before it is `undefined` or `null`, returning `undefined` in such cases.
+
+**For example:**
+```javascript
+let user = {}; // user has no address
+alert(user?.address?.street); // undefined (no error)
+```
+
+Optional chaining also allows accessing properties even if the parent object is null or undefined
+
+**For example:**
+```javascript
+let user = null;
+alert(user?.address); // undefined
+alert(user?.address.street); // undefined
+```
+
+### _Short-circuiting_
+
+Short-circuiting with optional chaining `(?.)` means that if the left part doesn't exist, the evaluation stops immediately.
+
+**For example:**
+```javascript
+let user = null;
+let x = 0;
+
+user?.sayHi(x++); // Since "user" is null, the sayHi call is skipped and x remains unchanged
+
+alert(x); // Output: 0, as the value of x is not incremented
+```
+
+In the above example, the increment operation **(x++)** is not performed because the evaluation short-circuits due to the null value of **"user"**.
 
 
-Hey everyone! 👋
+### _Other variants: ?.(), ?.[]_
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+Another variation of optional chaining includes using **?.()** to call a function or **?.[]** to access properties using square brackets.
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+**For example:**
+```javascript
+let userAdmin = {
+  admin() {
+    alert("I am admin");
+  }
+};
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
-- ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
-- [Functions & Expressions](https://github.com/lassiecoder/100daysofjs/tree/functions-and-expressions)
-- [Arrow functions basics](https://github.com/lassiecoder/100daysofjs/tree/arrow-functions)
+let userGuest = {};
 
-**Mastering Objects in JavaScript:**
-- [Basics of Objects](https://github.com/lassiecoder/100daysofjs/tree/basics-of-objects)
-- [Object references and copying](https://github.com/lassiecoder/100daysofjs/tree/object-references-and-copying)
-- [Garbage collection](https://github.com/lassiecoder/100daysofjs/tree/garbage-collection)
-- [Object methods and "this" keyword](https://github.com/lassiecoder/100daysofjs/tree/object-methods-and-this-keyword)
-- [Constructors and the "new" operator](https://github.com/lassiecoder/100daysofjs/tree/constructors-and-the-new-operator)
-- Optional chaining with '?.'
-- Symbol type
-- Object to primitive conversion
+userAdmin.admin?.(); // Output: "I am admin"
 
-**JavaScript Data Types & Operations:**
-- Understanding Data types
-- Methods of primitives
-- Working with Numbers
-- Manipulating Strings
-- Handling Arrays & Array methods
-- Exploring Iterables
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+userGuest.admin?.(); // No action taken as the method doesn't exist
+```
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+In the above example, the optional chaining `?.()` ensures that if the function exists, it will be executed, but if not, the evaluation stops without causing errors.
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+Similarly, `?.[]` allows us to access properties using square brackets, providing safe property access even if the object doesn't exist
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+**For example:**
+```javascript
+let key = "firstName";
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+let user1 = {
+  firstName: "John"
+};
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+let user2 = null;
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+alert( user1?.[key] ); // Output: "John"
+alert( user2?.[key] ); // Output: undefined
+```
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+We can also use optional chaining with the delete operator for safe property deletion
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
-
+**For example:**
+```javascript
+delete user?.details; // Delete user.details if user exists
+```
