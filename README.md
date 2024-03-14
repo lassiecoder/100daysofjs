@@ -29,7 +29,7 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - [Constructors and the "new" operator](https://github.com/lassiecoder/100daysofjs/tree/constructors-and-the-new-operator)
 - [Optional chaining with '?.'](https://github.com/lassiecoder/100daysofjs/tree/optional-chaining)
 - [Symbol type](https://github.com/lassiecoder/100daysofjs/tree/symbol-type)
-- Object to primitive conversion
+- [Object to primitive conversion](https://github.com/lassiecoder/100daysofjs/tree/object-to-primitive-conversion)
 
 **JavaScript Data Types & Operations:**
 - Understanding Data types
