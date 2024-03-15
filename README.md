@@ -1,109 +1,84 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
 
+**Understanding Data types and Methods of primitives**
 
-Hey everyone! 👋
+## 🍄 Understanding Data types
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+🥑 [Primitive Data Types](#primitive-data-types)
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+🥑 [Composite Data Types](#composite-data-types)
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
-- ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
-- [Functions & Expressions](https://github.com/lassiecoder/100daysofjs/tree/functions-and-expressions)
-- [Arrow functions basics](https://github.com/lassiecoder/100daysofjs/tree/arrow-functions)
+## 🍄 Methods of primitives
+ 
+🥑 [A primitive as an object](#a-primitive-as-an-object)
 
-**Mastering Objects in JavaScript:**
-- [Basics of Objects](https://github.com/lassiecoder/100daysofjs/tree/basics-of-objects)
-- [Object references and copying](https://github.com/lassiecoder/100daysofjs/tree/object-references-and-copying)
-- [Garbage collection](https://github.com/lassiecoder/100daysofjs/tree/garbage-collection)
-- [Object methods and "this" keyword](https://github.com/lassiecoder/100daysofjs/tree/object-methods-and-this-keyword)
-- [Constructors and the "new" operator](https://github.com/lassiecoder/100daysofjs/tree/constructors-and-the-new-operator)
-- [Optional chaining with '?.'](https://github.com/lassiecoder/100daysofjs/tree/optional-chaining)
-- [Symbol type](https://github.com/lassiecoder/100daysofjs/tree/symbol-type)
-- [Object to primitive conversion](https://github.com/lassiecoder/100daysofjs/tree/object-to-primitive-conversion)
+*****
 
-**JavaScript Data Types & Operations:**
-- Understanding Data types
-- Methods of primitives
-- Working with Numbers
-- Manipulating Strings
-- Handling Arrays & Array methods
-- Exploring Iterables
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+## _Understanding Data types_
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+In JavaScript, there are several data types that variables can hold. Here's a brief explanation of each:
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+### _Primitive Data Types_
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+1. **Number**: Represents numeric data, including integers and floating-point numbers.
+2. **String**: Represents textual data, enclosed in single `('')` or double `("")` quotes.
+3. **Boolean**: Represents a logical value, either `true` or `false`.
+4. **Undefined**: Represents a variable that has been declared but has not been assigned a value yet.
+5. **Null**: Represents the intentional absence of any object value.
+6. **Symbol**: Represents a unique and immutable value that may be used as the key of an object property.
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+### _Composite Data Types_
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+1. **Object**: Represents a collection of key-value pairs, where values can be of any data type (including other objects).
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+## _Methods of primitives_
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+JavaScript allows treating primitives _(like strings, numbers, etc)_ as objects, providing methods to call on them.
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+A primitive is a value of a primitive type, which includes `string`, `number`, `bigint`, `boolean`, `symbol`, `null`, and `undefined`. On the other hand, an object is capable of storing multiple values as properties and can be created using curly braces `{}`. Additionally, functions in JavaScript are also considered objects.
 
+Objects in JavaScript allow us to store functions as properties
+
+**For example:**
+
+```javascript
+let john = {
+  name: "John",
+  sayHi: function() {
+    alert("Hi buddy!");
+  }
+};
+
+john.sayHi(); // Hi buddy!
+```
+
+Built-in objects like **Date**, **Error**, and **HTML elements** already exist, each with their own properties and methods.
+
+### _A primitive as an object_
+
+In JavaScript, although primitives are intended to be lightweight and fast, there's a need to access methods and properties on them like objects. To address this, the language employs a solution where a special "object wrapper" is created temporarily to provide the additional functionality required, and then it is discarded.
+
+Each primitive type in JavaScript, including `String`, `Number`, `Boolean`, `Symbol`, and `BigInt`, has its own corresponding **"object wrapper"** that provides different sets of methods. For example, the string method `toUpperCase()` is used to capitalize a string, as mentioned below:
+
+```javascript
+let str = "Hello";
+
+alert( str.toUpperCase() ); // HELLO
+```
+
+Referring to the above example; 
+
+When calling `str.toUpperCase()`, here's what happens:
+
+1. Since `str` is a primitive, a special object is temporarily created with access to methods like `toUpperCase()`.
+2. The `toUpperCase()` method executes and generates a new string, which is then displayed by the `alert`.
+3. After the method call, the special object is discarded, leaving the original primitive `str` unaffected.
+
+Numbers also have their own methods. For example, `toFixed(n)` rounds the number to the specified precision:
+
+**For example:**
+
+```javascript
+let n = 1.23456;
+
+alert( n.toFixed(2) ); // 1.23
+```
