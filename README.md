@@ -32,8 +32,8 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - [Object to primitive conversion](https://github.com/lassiecoder/100daysofjs/tree/object-to-primitive-conversion)
 
 **JavaScript Data Types & Operations:**
-- Understanding Data types
-- Methods of primitives
+- [Understanding Data types](https://github.com/lassiecoder/100daysofjs/tree/data-types-and-methods-of-primitives)
+- [Methods of primitives](https://github.com/lassiecoder/100daysofjs/tree/data-types-and-methods-of-primitives)
 - Working with Numbers
 - Manipulating Strings
 - Handling Arrays & Array methods
