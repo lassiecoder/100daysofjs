@@ -146,14 +146,110 @@ let roundedStr = num.toFixed(2); // "12.35"
 
 ## _Imprecise calculations_
 
+JavaScript uses **IEEE-754** double-precision floating-point format for **numbers**, which is binary. Though efficient, it faces limitations with certain decimal fractions.
+
+Because of the binary nature of the format, decimal fractions that are simple in **base-10** arithmetic can have repeating representations in binary. For instance, **0.1** in **base-10** repeats in binary.
+
+```javascript
+0.1 (base 10) = 0.0001100110011001100110011001100110011001100110011... (base 2)
+```
+
+This happens because the result of the addition, 0.30000000000000004, is the closest floating-point representation of the sum of 0.1 and 0.2 in the IEEE-754 format.
+
+JavaScript offers methods like `toFixed()`, `toPrecision()`, and `toExponential()` to format numbers with specific decimal places or significant digits. External libraries like **decimal.js** enable precise decimal arithmetic in JavaScript.
+
 ## _Tests: isFinite and isNaN_
 
-## _parseInt and parseFloat_
+JavaScript provides two functions to check special numeric values: isNaN and isFinite.
 
-## _Other math functions_
+1. `isNaN(value)` checks if the value is NaN.
+
+The **isNaN** function in JavaScript converts its argument to a number and then checks if it's NaN.
 
 **For example:**
 
 ```javascript
+alert( isNaN(NaN) ); // true
+alert( isNaN("str") ); // true
+```
+
+However, comparing NaN directly using === doesn't work as expected because NaN doesn't equal itself
+
+```javascript
+alert( NaN === NaN ); // false
+```
+
+2. `isFinite(value)` checks if the value is a regular number, excluding NaN, Infinity, and -Infinity.
+
+The isFinite(value) function converts its argument to a number and returns true if it’s a regular number, excluding NaN, Infinity, and -Infinity:
+
+- isFinite("15") returns true.
+- isFinite("str") returns false because it's NaN
+- isFinite(Infinity) returns false because it's Infinity
+
+It's commonly used to validate whether a string value is a regular number
+
+**For example:**
+
+```javascript
+let num = +prompt("Enter a number", '');
+
+// Returns true unless you enter Infinity, -Infinity, or not a number
+alert( isFinite(num) );
+```
+
+## _parseInt and parseFloat_
+
+`parseInt()` and `parseFloat()` are used to convert strings to numbers, especially when dealing with values containing units or currency symbols.
+
+They handle parsing of numeric values with additional characters and units, such as **"100px"** or **"19€"**.
+
+`parseInt()` and `parseFloat()` extract a number from a string until they encounter a non-numeric character. If an error occurs, the function returns the parsed number.
+
+`parseInt()` returns an integer, while `parseFloat()` returns a floating-point number.
+
+**For example:**
+
+```javascript
+alert( parseInt('10px') ); // 100
+alert( parseFloat('12.5mm') ); // 12.5
+
+alert( parseInt('98.9') ); // 12, only the integer part is returned
+alert( parseFloat('67.5.4') ); // 12.3, the second point stops the reading
+```
+
+`parseInt()` or `parseFloat()` return `NaN` if no digits are found in the input string before encountering a non-numeric character. For example:
+
+```javascript
+alert(parseInt('a123')); // NaN
+```
+
+In the above example, `NaN` is returned because the first character `'a'` is not a digit.
+
+## _Other math functions_
+
+JavaScript includes a Math object, which provides various mathematical functions and constants.
+
+**Examples include:**
+
+1. `Math.random()`: Returns a random number between 0 (inclusive) and 1 (exclusive).
+
+```javascript
+console.log(Math.random()); // Example output: 0.8282435896381402
+console.log(Math.random()); // Example output: 0.4618425245994924
 
 ```
+
+2. `Math.max(a, b, c...)` and `Math.min(a, b, c...)`: Returns the largest and smallest values among the provided arguments.
+
+```javascript
+console.log(Math.max(9, 58, -156, 190, 9)); // Example output: 190
+console.log(Math.min(9, 58, -156, 190, 9)); // Example output: -156
+```
+
+3. `Math.pow(n, power)`: Returns the result of raising `n` to the power of `power`.
+
+```javascript
+console.log(Math.pow(7, 4)); // Example output: 2401
+```
+
