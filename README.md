@@ -1,109 +1,159 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
 
+**Working with Numbers**
 
-Hey everyone! 👋
+## 🍄 Numbers
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+In modern JavaScript, there are two primary types of numbers:
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+1. **Regular numbers:** These are stored in 64-bit format IEEE-754, commonly known as "double precision floating point numbers".
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
-- ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
-- [Functions & Expressions](https://github.com/lassiecoder/100daysofjs/tree/functions-and-expressions)
-- [Arrow functions basics](https://github.com/lassiecoder/100daysofjs/tree/arrow-functions)
+2. **BigInt numbers:** These represent integers of arbitrary length. They are necessary in situations where regular integer numbers exceed the maximum safe value or fall below the minimum safe value.
 
-**Mastering Objects in JavaScript:**
-- [Basics of Objects](https://github.com/lassiecoder/100daysofjs/tree/basics-of-objects)
-- [Object references and copying](https://github.com/lassiecoder/100daysofjs/tree/object-references-and-copying)
-- [Garbage collection](https://github.com/lassiecoder/100daysofjs/tree/garbage-collection)
-- [Object methods and "this" keyword](https://github.com/lassiecoder/100daysofjs/tree/object-methods-and-this-keyword)
-- [Constructors and the "new" operator](https://github.com/lassiecoder/100daysofjs/tree/constructors-and-the-new-operator)
-- [Optional chaining with '?.'](https://github.com/lassiecoder/100daysofjs/tree/optional-chaining)
-- [Symbol type](https://github.com/lassiecoder/100daysofjs/tree/symbol-type)
-- [Object to primitive conversion](https://github.com/lassiecoder/100daysofjs/tree/object-to-primitive-conversion)
+🥑 [More ways to write a number](#more-ways-to-write-a-number)
 
-**JavaScript Data Types & Operations:**
-- [Understanding Data types](https://github.com/lassiecoder/100daysofjs/tree/data-types-and-methods-of-primitives)
-- [Methods of primitives](https://github.com/lassiecoder/100daysofjs/tree/data-types-and-methods-of-primitives)
-- Working with Numbers
-- Manipulating Strings
-- Handling Arrays & Array methods
-- Exploring Iterables
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+🥑 [toString(base)](#tostringbase)
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+🥑 [Rounding](#rounding)
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+🥑 [Imprecise calculations](#imprecise-calculations)
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+🥑 [Tests: isFinite and isNaN](#tests-isfinite-and-isnan)
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+🥑 [parseInt and parseFloat](#parseint-and-parsefloat)
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+🥑 [Other math functions](#other-math-functions)
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+*****
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+## _More ways to write a number_
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+Here are some alternative ways to represent **numbers** in JavaScript:
 
+1. Using underscores as separators:
+   
+    **For example:**
+    
+    ```javascript
+    let billion = 1_000_000_000;
+    ```
+
+   Underscores enhance readability by separating digits, but JavaScript ignores them, making `1_000_000_000` equivalent to `1000000000`
+
+2. Using exponential notation with the letter "e":
+   
+    **For example:**
+
+    ```javascript
+    let billion = 1e9; // 1 billion, equivalent to 1 and 9 zeroes
+    alert(7.3e9); // 7.3 billion, same as 7300000000 or 7_300_000_000
+    ```
+
+    In the above example, `e` notation multiplies the number by 1 with the specified number of zeroes. For instance, `1e3` equals `1 * 1000`, and `1.23e6` equals `1.23 * 1000000`
+
+3. Representing very small numbers:
+
+    **For example:**
+    ```javascript
+    let microsecond = 0.000001;
+    let microsecond = 1e-6; // five zeroes to the left from 1
+    ```
+
+    In the above example, negative number after "e" means division by 1 with the specified number of zeroes. For instance, `1e-3` equals `1 / 1000`, and `1.23e-6` equals `1.23 / 1000000`.
+
+**Hex, binary and octal numbers**
+
+Hexadecimal numbers are represented using the prefix `0x`, binary numbers with `0b`, and octal numbers with `0o`. For example:
+
+**For example:**
+
+```javascript
+alert(0xff); // 255
+alert(0b11111111); // 255 (binary)
+alert(0o377); // 255 (octal)
+```
+
+These prefixes provide shorter and more convenient ways to represent numbers in their respective numeral systems.
+
+## _toString(base)_
+
+The method `num.toString(base)` converts the number `num` into a string representation using the specified numeral system base.
+
+**For example:**
+
+```javascript
+let num = 255;
+
+alert(num.toString(16)); // ff
+alert(num.toString(2)); // 11111111
+```
+
+Common use-cases:
+
+- Base 16 (hexadecimal) for colors and character encodings
+- Base 2 (binary) for debugging bitwise operations
+- Base 36 for representing long identifiers as shorter strings, such as in creating short URLs
+
+## _Rounding_
+
+Number rounding refers to the process of adjusting a numerical value to a specified precision or number of decimal places.
+
+1. `Math.floor()` rounds positive numbers towards zero and negative numbers towards negative infinity, effectively removing any decimal part
+
+**For example:**
+
+```javascript
+let num = 3.7;
+let roundedDown = Math.floor(num); // 3
+```
+
+2. `Math.ceil()` rounds up positive numbers to the nearest integer, moving towards positive infinity, and truncates negative numbers towards zero, removing anything after the decimal point
+
+**For example:**
+
+```javascript
+let num = 3.1;
+let roundedUp = Math.ceil(num); // 4
+```
+
+3. Math.round(): This function rounds a number to the nearest integer. It rounds to the nearest whole number, with halves rounded upwards
+
+**For example:**
+
+```javascript
+let num = 3.6;
+let rounded = Math.round(num); // 4
+```
+
+4. `Math.trunc()` removes the decimal part without rounding, differing from `Math.floor()` by truncating toward zero, including with negative numbers
+
+**For example:**
+
+```javascript
+let num = -3.9;
+let truncated = Math.trunc(num); // -3
+```
+
+5. `toFixed()` This method rounds a number to a specified number of digits after the decimal point and returns a string representation of the result
+
+**For example:**
+
+```javascript
+let num = 12.345;
+let roundedStr = num.toFixed(2); // "12.35"
+```
+
+6. **Multiplication and Division:** To round a number to n decimal places, multiply by 10^n, round, then divide by 10^n
+
+## _Imprecise calculations_
+
+## _Tests: isFinite and isNaN_
+
+## _parseInt and parseFloat_
+
+## _Other math functions_
+
+**For example:**
+
+```javascript
+
+```
