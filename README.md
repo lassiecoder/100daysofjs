@@ -1,8 +1,6 @@
 
 **Exploring Iterables**
 
-## 🍄 Array methods
-
 🥑 [Symbol.iterator](#symboliterator)
 
 🥑 [String is iterable](#string-is-iterable)
