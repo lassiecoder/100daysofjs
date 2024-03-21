@@ -37,7 +37,7 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - [Working with Numbers](https://github.com/lassiecoder/100daysofjs/tree/numbers)
 - [Manipulating Strings](https://github.com/lassiecoder/100daysofjs/tree/manipulating-strings)
 - [Handling Arrays & Array methods](https://github.com/lassiecoder/100daysofjs/tree/handling-arrays-and-array-methods)
-- Exploring Iterables
+- [Exploring Iterables](https://github.com/lassiecoder/100daysofjs/tree/exploring-iterables)
 - Map and Set data structures
 - WeakMap and WeakSet for memory management
 - Object manipulation: keys, values, entries
