@@ -1,109 +1,255 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
 
+**Map and Set data structures**
 
-Hey everyone! 👋
+🥑 [Map](#map)
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+🥑 [Iteration over Map](#iteration-over-map)
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+🥑 [Object.entries: Map from Object](#objectentries-map-from-object)
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
-- ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
-- [Functions & Expressions](https://github.com/lassiecoder/100daysofjs/tree/functions-and-expressions)
-- [Arrow functions basics](https://github.com/lassiecoder/100daysofjs/tree/arrow-functions)
+🥑 [Object.fromEntries: Object from Map](#objectfromentries-object-from-map)
 
-**Mastering Objects in JavaScript:**
-- [Basics of Objects](https://github.com/lassiecoder/100daysofjs/tree/basics-of-objects)
-- [Object references and copying](https://github.com/lassiecoder/100daysofjs/tree/object-references-and-copying)
-- [Garbage collection](https://github.com/lassiecoder/100daysofjs/tree/garbage-collection)
-- [Object methods and "this" keyword](https://github.com/lassiecoder/100daysofjs/tree/object-methods-and-this-keyword)
-- [Constructors and the "new" operator](https://github.com/lassiecoder/100daysofjs/tree/constructors-and-the-new-operator)
-- [Optional chaining with '?.'](https://github.com/lassiecoder/100daysofjs/tree/optional-chaining)
-- [Symbol type](https://github.com/lassiecoder/100daysofjs/tree/symbol-type)
-- [Object to primitive conversion](https://github.com/lassiecoder/100daysofjs/tree/object-to-primitive-conversion)
+🥑 [Set](#set)
 
-**JavaScript Data Types & Operations:**
-- [Understanding Data types](https://github.com/lassiecoder/100daysofjs/tree/data-types-and-methods-of-primitives)
-- [Methods of primitives](https://github.com/lassiecoder/100daysofjs/tree/data-types-and-methods-of-primitives)
-- [Working with Numbers](https://github.com/lassiecoder/100daysofjs/tree/numbers)
-- [Manipulating Strings](https://github.com/lassiecoder/100daysofjs/tree/manipulating-strings)
-- [Handling Arrays & Array methods](https://github.com/lassiecoder/100daysofjs/tree/handling-arrays-and-array-methods)
-- [Exploring Iterables](https://github.com/lassiecoder/100daysofjs/tree/exploring-iterables)
-- Map and Set data structures
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+🥑 [Iteration over Set](#iteration-over-set)
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+*****
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+### _Map_
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+A Map is a collection of keyed data items, similar to an Object, but with the flexibility to use keys of any type.
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+Key methods and properties include:
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+- `new Map()`: Creates a new Map object
+- `map.set(key, value)`: Stores a value by its corresponding key
+- `map.get(key)`: Retrieves the value associated with the provided key, returning `undefined` if the key doesn't exist
+- `map.has(key)`: Checks if a key exists in the map, returning `true` or `false`
+- `map.delete(key)`: Removes an element (key/value pair) from the map based on the key
+- `map.clear()`: Clears all elements from the map
+- `map.size`: Returns the current number of elements in the map
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+**For example:**
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+```javascript
+let map = new Map();
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+map.set('1', 'str1');   // string key
+map.set(1, 'num1');     // numeric key
+map.set(true, 'bool1'); // boolean key
 
+// Maps maintain key types, unlike regular Objects
+// So '1' and 1 are considered different keys
+alert(map.get(1));      // 'num1'
+alert(map.get('1'));    // 'str1'
+
+alert(map.size);        // 3
+```
+
+Map allows the use of objects as keys, providing a versatile way to store key-value pairs.
+
+**For example:**
+
+```javascript
+let john = { name: "John" };
+
+// Create a map to store the visit counts for each user
+let visitsCountMap = new Map();
+
+// Use the 'john' object as the key for the map
+visitsCountMap.set(john, 123);
+
+// Retrieve the visit count for 'john'
+alert( visitsCountMap.get(john) ); // 123
+```
+
+Map allows object keys, unlike plain Objects, where using another object as a key leads to unexpected behavior.
+
+**For example:**
+
+```javascript
+let john = { name: "John" };
+let ben = { name: "Ben" };
+
+let visitsCountObj = {}; // Create an object
+
+// Attempt to use 'ben' object as a key
+visitsCountObj[ben] = 234;
+
+// Attempt to use 'john' object as a key, which replaces the previous key ('ben' object)
+visitsCountObj[john] = 123;
+
+// The value stored under the key "[object Object]" reflects the last key-value assignment
+alert( visitsCountObj["[object Object]"] ); // 123
+```
+
+### _Iteration over Map_
+
+When iterating over a Map, three methods can be used:
+
+- `map.keys()`: Returns an iterable for keys.
+- `map.values()`: Returns an iterable for values.
+- `map.entries()`: Returns an iterable for entries [key, value], which is used by default in `for..of` loops.
+
+**For example:**
+
+```javascript
+let recipeMap = new Map([
+  ['cucumber', 500],
+  ['tomatoes', 350],
+  ['onion',    50]
+]);
+
+// Iterate over keys (vegetables)
+for (let vegetable of recipeMap.keys()) {
+  alert(vegetable); // cucumber, tomatoes, onion
+}
+
+// Iterate over values (amounts)
+for (let amount of recipeMap.values()) {
+  alert(amount); // 500, 350, 50
+}
+
+// Iterate over [key, value] entries
+for (let entry of recipeMap) { // Same as recipeMap.entries()
+  alert(entry); // cucumber,500 (and so on)
+}
+```
+
+Additionally, Map provides a `forEach` method, similar to Arrays:
+
+**For example:**
+
+```javascript
+// Execute the function for each (key, value) pair
+recipeMap.forEach((value, key, map) => {
+  alert(`${key}: ${value}`); // cucumber: 500, and so on
+});
+```
+
+### _Object.entries: Map from Object_
+
+When initializing a Map, we can provide an array containing key/value pairs, like so:
+
+```javascript
+let map = new Map([
+  ['1',  'str1'],
+  [1,    'num1'],
+  [true, 'bool1']
+]);
+
+alert( map.get('1') ); // str1
+```
+
+If we have a plain object and want to convert it into a Map, we can utilize the built-in method `Object.entries(obj)`, which returns an array of key/value pairs formatted for use with a Map.
+
+This is how we create a map from an object:
+
+```javascript
+let obj = {
+  name: "John",
+  age: 30
+};
+
+let map = new Map(Object.entries(obj));
+
+alert( map.get('name') ); // John
+```
+
+In the above example, `Object.entries` returns an array of key/value pairs: `[ ["name","John"], ["age", 30] ]`, which is suitable for initializing a Map.
+
+### _Object.fromEntries: Object from Map_
+
+`Object.fromEntries` is a method that creates an object from an array of [key, value] pairs. This reverse operation of `Object.entries(obj)` is useful when we need to convert data from a Map to a plain object.
+
+**For example:**
+
+```javascript
+let map = new Map();
+map.set('banana', 1);
+map.set('orange', 2);
+map.set('meat', 4);
+
+let obj = Object.fromEntries(map); // Convert Map to plain object
+
+// obj = { banana: 1, orange: 2, meat: 4 }
+
+alert(obj.orange); // 2
+```
+
+Using `map.entries()` returns an iterable of key/value pairs, which is precisely the format expected by `Object.fromEntries`. Hence, it efficiently converts a Map to a plain object.
+
+### _Set_
+
+A Set is a specialized collection type in JavaScript that stores unique values without associated keys.
+
+- `new Set([iterable])`: Creates a new Set, optionally initializing it with values from an iterable object like an array
+- `set.add(value)`: Adds a value to the Set, returning the Set itself
+- `set.delete(value)`: Removes a value from the Set, returning true if the value existed before deletion, otherwise false
+- `set.has(value)`: Checks if a value exists in the Set, returning true if it does, otherwise false
+- `set.clear()`: Removes all values from the Set
+- `set.size`: Returns the number of elements in the Set
+
+One notable feature of **Sets** is that they only contain unique values. Repeated attempts to add the same value won't result in duplicates.
+
+**For example:**
+
+```javascript
+// Creating a new Set
+let set = new Set();
+
+// Adding values to the Set
+let john = { name: "John" };
+let pete = { name: "Pete" };
+let mary = { name: "Mary" };
+
+set.add(john);
+set.add(pete);
+set.add(mary);
+
+// Adding a duplicate value (john)
+set.add(john);
+
+// Checking the size of the Set (should be 3)
+console.log("Size of the Set:", set.size); // Output: 3
+
+// Checking if a value exists in the Set
+console.log("Does set have John?", set.has(john)); // Output: true
+console.log("Does set have Anna?", set.has({ name: "Anna" })); // Output: false
+
+// Deleting a value from the Set
+console.log("Deleting Mary:", set.delete(mary)); // Output: true
+console.log("Size of the Set after deletion:", set.size); // Output: 2
+
+// Clearing all values from the Set
+set.clear();
+console.log("Size of the Set after clearing:", set.size); // Output: 0
+```
+
+### _Iteration over Set_
+
+We can iterate over a Set using either a `for..of` loop or the `forEach` method:
+
+**For example:**
+
+```javascript
+let set = new Set(["oranges", "apples", "bananas"]);
+
+// Using for..of loop
+for (let value of set) {
+  alert(value);
+}
+
+// Using forEach method
+set.forEach((value, valueAgain, set) => {
+  alert(value);
+});
+```
+
+The `forEach` method's callback function takes three arguments: **the current value**, **a duplicate of the current value**, **and the target object**, to ensure compatibility with Map.
+
+The same iterator methods available for Map are supported for Sets:
+
+- `set.keys()`: Returns an iterable for values.
+- `set.values()`: Same as `set.keys()`.
+- `set.entries()`: Returns an iterable for `[value, value]` entries.
