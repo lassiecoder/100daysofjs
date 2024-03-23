@@ -1,109 +1,201 @@
-![100daysofjs](https://github.com/lassiecoder/100daysofjs/assets/17312616/05e9143b-cde4-4c29-9a25-2870dfb75db0)
 
+**WeakMap and WeakSet**
 
-Hey everyone! 👋
+🥑 [WeakMap](#weakmap)
 
-I'm diving headfirst into a 100-day JavaScript adventure, and I couldn't be more thrilled to share it with you all! 🎉
+🥑 [Use case: additional data](#use-case-additional-data)
 
-Over the next three months, I'll be immersing myself in everything JavaScript has to offer, from the very basics to some seriously advanced concepts. Here's a sneak peek into what's in store:
+🥑 [Use case: caching](#use-case-caching)
 
-**Exploring JavaScript Fundamentals:**
-- [Code structure](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Modern mode: "use strict"](https://github.com/lassiecoder/100daysofjs/tree/code-structure-and-modern-mode)
-- [Variables & Data types](https://github.com/lassiecoder/100daysofjs/tree/variables-and-data-types)
-- [Interaction methods: alert, prompt, confirm](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Type Conversions](https://github.com/lassiecoder/100daysofjs/tree/interaction-and-type-conversions)
-- [Basic operators & Math](https://github.com/lassiecoder/100daysofjs/tree/basic-operators-and-math) 
-- [Comparisons & Conditional branching: if, '?'](https://github.com/lassiecoder/100daysofjs/tree/comparisons-and-conditional-branching)
-- [Logical operators & Nullish coalescing '??'](https://github.com/lassiecoder/100daysofjs/tree/logical-operators-and-nullish-coalescing)
-- [Loops: while, for](https://github.com/lassiecoder/100daysofjs/tree/loops)
-- ["switch" statement](https://github.com/lassiecoder/100daysofjs/tree/switch-statement)
-- [Functions & Expressions](https://github.com/lassiecoder/100daysofjs/tree/functions-and-expressions)
-- [Arrow functions basics](https://github.com/lassiecoder/100daysofjs/tree/arrow-functions)
+🥑 [WeakSet](#weakset)
 
-**Mastering Objects in JavaScript:**
-- [Basics of Objects](https://github.com/lassiecoder/100daysofjs/tree/basics-of-objects)
-- [Object references and copying](https://github.com/lassiecoder/100daysofjs/tree/object-references-and-copying)
-- [Garbage collection](https://github.com/lassiecoder/100daysofjs/tree/garbage-collection)
-- [Object methods and "this" keyword](https://github.com/lassiecoder/100daysofjs/tree/object-methods-and-this-keyword)
-- [Constructors and the "new" operator](https://github.com/lassiecoder/100daysofjs/tree/constructors-and-the-new-operator)
-- [Optional chaining with '?.'](https://github.com/lassiecoder/100daysofjs/tree/optional-chaining)
-- [Symbol type](https://github.com/lassiecoder/100daysofjs/tree/symbol-type)
-- [Object to primitive conversion](https://github.com/lassiecoder/100daysofjs/tree/object-to-primitive-conversion)
+*****
 
-**JavaScript Data Types & Operations:**
-- [Understanding Data types](https://github.com/lassiecoder/100daysofjs/tree/data-types-and-methods-of-primitives)
-- [Methods of primitives](https://github.com/lassiecoder/100daysofjs/tree/data-types-and-methods-of-primitives)
-- [Working with Numbers](https://github.com/lassiecoder/100daysofjs/tree/numbers)
-- [Manipulating Strings](https://github.com/lassiecoder/100daysofjs/tree/manipulating-strings)
-- [Handling Arrays & Array methods](https://github.com/lassiecoder/100daysofjs/tree/handling-arrays-and-array-methods)
-- [Exploring Iterables](https://github.com/lassiecoder/100daysofjs/tree/exploring-iterables)
-- [Map and Set data structures](https://github.com/lassiecoder/100daysofjs/tree/map-and-set-data-structures)
-- WeakMap and WeakSet for memory management
-- Object manipulation: keys, values, entries
-- Destructuring assignment for efficient coding
-- Working with Date and time
-- JSON methods and toJSON for data serialization
+### _WeakMap_
 
-**Advanced Function Techniques in JavaScript:**
-- Recursion and managing the stack
-- Leveraging Rest parameters and spread syntax
-- Understanding Variable scope and closure
-- Considerations with the old "var" keyword
-- Exploring the Global object
-- Function objects and Named Function Expressions (NFE)
-- Utilizing the "new Function" syntax
-- Scheduling tasks with setTimeout and setInterval
-- Applying Decorators and forwarding with call/apply
-- Function binding for managing context
-- Revisiting Arrow functions and their nuances
+It stores key/value pairs where keys are weakly referenced, allowing objects as keys without preventing garbage collection if not referenced elsewhere
 
-**Advanced Object Property Configuration & Prototypal Inheritance:**
-- Understanding Property flags and descriptors
-- Implementing Property getters and setters for controlled access
-- Delving into Prototypal inheritance and its mechanisms
-- Exploring F.prototype and its role in inheritance chains
-- Native prototypes and their usage in JavaScript
-- Prototype methods and handling objects without __proto__ references
+**For example:**
 
-**Exploring JavaScript Classes:**
-- Introduction to Class basic syntax
-- Implementing Class inheritance
-- Defining Static properties and methods within classes
-- Understanding Private and protected properties and methods
-- Extending built-in classes for custom functionality
-- Class checking using "instanceof"
-- Utilizing Mixins for flexible composition of behavior
+```javascript
+// Creating a WeakMap
+const cache = new WeakMap();
 
-**Handling Errors in JavaScript:**
-- Implementing basic error handling with "try...catch"
-- Creating Custom errors by extending the Error object
+// Creating some objects
+const obj1 = {};
+const obj2 = {};
 
-**Promises, async/await JavaScript Operations:**
-- Introduction to callbacks
-- Understanding Promises and their usage
-- Chaining Promises for sequential operations
-- Error handling with Promises
-- Exploring the Promise API for additional functionality
-- Promisification for converting callback-based functions to Promise-based
-- Managing microtasks
-- Utilizing async/await for asynchronous code readability and simplicity
+// Adding data to the WeakMap
+cache.set(obj1, "data for obj1");
+cache.set(obj2, "data for obj2");
 
-**Generators, advanced iteration & Modules Features:**
-- Understanding Generators for advanced iteration
-- Exploring async iteration and generators for asynchronous operations
-- Introduction to Modules and their benefits
-- Exporting and Importing modules for code organization and reusability
-- Dynamically importing modules for efficient loading and dependency management
+// Retrieving data from the WeakMap
+console.log(cache.get(obj1)); // "data for obj1"
+console.log(cache.get(obj2)); // "data for obj2"
 
-**Miscellaneous JavaScript Topics:**
-- Utilizing Proxy and Reflect for meta-programming and interception
-- Running code strings dynamically with eval (caution advised)
-- Implementing Currying for functional programming
-- Understanding Reference Type in JavaScript
-- Working with BigInt for handling large integer values
-- Exploring Unicode and String internals for character encoding
-- Utilizing WeakRef and FinalizationRegistry for memory management and cleanup duties
+// Removing data from the WeakMap
+cache.delete(obj1);
 
-Stay tuned for daily updates, challenges, and plenty of code snippets! Let's make these 100 days count! 💻✨
+// Checking if an object exists in the WeakMap
+console.log(cache.has(obj1)); // false
+```
 
+**WeakMap methods:**
+
+**set(key, value):** Adds a new key/value pair to the WeakMap.
+**get(key):** Retrieves the value associated with the specified key.
+**has(key):** Checks if the WeakMap contains a specific key.
+**delete(key):** Removes the key/value pair associated with the specified key.
+
+**Usecase:**
+
+```javascript
+// Creating a WeakMap
+const cache = new WeakMap();
+
+// Creating some objects
+const obj1 = {};
+const obj2 = {};
+
+// Adding data to the WeakMap
+cache.set(obj1, "data for obj1");
+cache.set(obj2, "data for obj2");
+
+// Retrieving data from the WeakMap
+console.log(cache.get(obj1)); // "data for obj1"
+console.log(cache.get(obj2)); // "data for obj2"
+
+// Checking if an object exists in the WeakMap
+console.log(cache.has(obj1)); // true
+console.log(cache.has(obj2)); // true
+
+// Deleting data from the WeakMap
+cache.delete(obj1);
+
+// Checking again after deletion
+console.log(cache.has(obj1)); // false
+console.log(cache.has(obj2)); // true
+```
+
+### _Use case: additional data_
+
+WeakMap efficiently associates metadata with objects, allowing garbage collection if no other references exist, optimizing memory usage
+
+**For example:**
+
+```javascript
+// Create a WeakMap to store additional data for objects
+const metadataMap = new WeakMap();
+
+// Function to associate additional data with an object
+function setMetadata(obj, metadata) {
+    metadataMap.set(obj, metadata);
+}
+
+// Function to retrieve the associated metadata for an object
+function getMetadata(obj) {
+    return metadataMap.get(obj);
+}
+
+// Example objects
+const user1 = { id: 1 };
+const user2 = { id: 2 };
+
+// Associate metadata with objects
+setMetadata(user1, { name: 'John', age: 30 });
+setMetadata(user2, { name: 'Alice', age: 25 });
+
+// Retrieve metadata for objects
+console.log(getMetadata(user1)); // { name: 'John', age: 30 }
+console.log(getMetadata(user2)); // { name: 'Alice', age: 25 }
+
+// Object reference removed, allowing for potential garbage collection
+user1 = null;
+user2 = null;
+```
+
+### _Use case: caching_
+
+Using WeakMap for caching associates cached data with specific objects, enabling garbage collection of unreferenced objects to prevent memory leaks and ensure memory efficiency
+
+WeakMap facilitates caching by associating cached data with input parameters, enabling efficient garbage collection of unused objects
+
+**For example:**
+
+```javascript
+const cache = new WeakMap();
+
+function computeExpensiveResult(input) {
+    if (cache.has(input)) {
+        console.log('Fetching cached result...');
+        return cache.get(input);
+    }
+
+    console.log('Computing expensive result...');
+    const result = /* Perform expensive computation */;
+    cache.set(input, result);
+    return result;
+}
+
+const inputData1 = { id: 1 };
+const inputData2 = { id: 2 };
+
+console.log(computeExpensiveResult(inputData1)); // Compute and cache result for inputData1
+console.log(computeExpensiveResult(inputData1)); // Fetch cached result for inputData1
+console.log(computeExpensiveResult(inputData2)); // Compute and cache result for inputData2
+console.log(computeExpensiveResult(inputData2)); // Fetch cached result for inputData2
+```
+
+In the above example;
+
+- The function `computeExpensiveResult` computes and caches results for unique input objects
+- Cached results are linked to input objects via WeakMap
+- Allows input objects to be garbage collected if no longer referenced elsewhere
+- Ensures efficient memory usage, particularly in scenarios with potentially stale cached data
+
+### _WeakSet_
+
+WeakSet is a JavaScript collection for storing unique objects without preventing them from being garbage collected when not referenced
+
+It's is handy for storing a collection of unique objects, allowing them to be garbage collected when unused
+
+**For example:**
+
+```javascript
+// Creating a new WeakSet
+const uniqueObjects = new WeakSet();
+
+// Creating some objects
+const obj1 = { name: 'Object 1' };
+const obj2 = { name: 'Object 2' };
+const obj3 = { name: 'Object 3' };
+
+// Adding objects to the WeakSet
+uniqueObjects.add(obj1);
+uniqueObjects.add(obj2);
+uniqueObjects.add(obj3);
+
+// Adding a duplicate object (will not be added since WeakSet only stores unique objects)
+uniqueObjects.add(obj1);
+
+// Checking if objects exist in the WeakSet
+console.log(uniqueObjects.has(obj1)); // true
+console.log(uniqueObjects.has(obj2)); // true
+console.log(uniqueObjects.has(obj3)); // true
+console.log(uniqueObjects.has({ name: 'Object 1' })); // false (different object reference)
+
+// Removing an object from the WeakSet
+uniqueObjects.delete(obj1);
+
+// Checking again after deletion
+console.log(uniqueObjects.has(obj1)); // false
+```
+
+In the above example;
+
+- We create a WeakSet named `uniqueObjects` to store unique objects
+- Multiple objects are added to the WeakSet
+- Verification of object existence is done using the `has` method
+- Demonstration of the non-addition of duplicate objects
+- Removal of an object via the `delete` method
+- Verification of the absence of the deleted object in the WeakSet
