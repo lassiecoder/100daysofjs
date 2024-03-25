@@ -40,7 +40,7 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - [Exploring Iterables](https://github.com/lassiecoder/100daysofjs/tree/exploring-iterables)
 - [Map and Set data structures](https://github.com/lassiecoder/100daysofjs/tree/map-and-set-data-structures)
 - [WeakMap and WeakSet for memory management](https://github.com/lassiecoder/100daysofjs/tree/weakmap-and-weakset)
-- Object manipulation: keys, values, entries
+- [Object manipulation: keys, values, entries](https://github.com/lassiecoder/100daysofjs/tree/object-manipulation-keys-values-entries)
 - Destructuring assignment for efficient coding
 - Working with Date and time
 - JSON methods and toJSON for data serialization
