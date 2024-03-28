@@ -42,7 +42,7 @@ Over the next three months, I'll be immersing myself in everything JavaScript ha
 - [WeakMap and WeakSet for memory management](https://github.com/lassiecoder/100daysofjs/tree/weakmap-and-weakset)
 - [Object manipulation: keys, values, entries](https://github.com/lassiecoder/100daysofjs/tree/object-manipulation-keys-values-entries)
 - [Destructuring assignment for efficient coding](https://github.com/lassiecoder/100daysofjs/tree/destructuring-assignment)
-- Working with Date and time
+- [Working with Date and time](https://github.com/lassiecoder/100daysofjs/tree/date-and-time)
 - JSON methods and toJSON for data serialization
 
 **Advanced Function Techniques in JavaScript:**
